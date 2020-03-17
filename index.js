@@ -37,6 +37,7 @@ function peerReviewDraft() {
 
   console.log('Fetched messages: ', messages);
 
+  /*
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
     cc: 'kenji@frontapp.com',
@@ -53,5 +54,5 @@ function peerReviewDraft() {
       type: 'reply',
       originalMessageId: ''
     }
-  });
+  }); */
 }
