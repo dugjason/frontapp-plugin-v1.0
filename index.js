@@ -41,12 +41,12 @@ async function peerReviewDraft() {
 
   Front.createDraft({
     //channelId: 'cha_g17v',
-    //cc: ['kenji@frontapp.com'],
+    cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
-      body: `🌟Completeness: 👎 <br><br>
-             🤖 Tone: 👎 <br><br>
-             💯Correctness: 👍 <br><br>`
+      body: `🌟Completeness: 👎 <br><br><br>
+             🤖 Tone: 👎 <br><br><br>
+             💯Correctness: 👍 <br><br><br>`
 
     },
     replyOptions: {
