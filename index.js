@@ -37,7 +37,7 @@ async function peerReviewDraft() {
 
   console.log('Fetched messages: ', messages);
 
-  let message = messages[messages.length - 1];
+  let message = messages.results[messages.results.length - 1];
 
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
