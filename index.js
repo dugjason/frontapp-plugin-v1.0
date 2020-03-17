@@ -33,9 +33,7 @@ function unassign() {
 }
 
 function peerReviewDraft() {
-  Front.listMessages().then((err, res) => {
-    console.log(res);
-  })
+  let messages = await Front.listMessages();
 
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
