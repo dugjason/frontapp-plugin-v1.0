@@ -32,7 +32,7 @@ function unassign() {
   Front.assign(null);
 }
 
-function peerReviewDraft() {
+async function peerReviewDraft() {
   let messages = await Front.listMessages();
 
   console.log('Fetched messages: ', messages);
