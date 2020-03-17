@@ -40,20 +40,18 @@ async function peerReviewDraft() {
   let message = messages.results[messages.results.length - 1];
 
   Front.createDraft({
-    channelId: 'cha_g17v',
-    cc: ['kenji@frontapp.com'],
+    //channelId: 'cha_g17v',
+    //cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
-      body: `🌟Completeness: 👎
+      body: `🌟Completeness: 👎 \n\n
+             🤖 Tone: 👎 \n\n
+             💯Correctness: 👍\n\n`
 
-🤖 Tone: 👎
-
-💯Correctness: 👍`
-
-    },
-    replyOptions: {
-      type: 'reply',
-      originalMessageId: message.id
-    }
+    } //,
+    //replyOptions: {
+    //  type: 'reply',
+    //  originalMessageId: message.id
+    //}
   });
 }
