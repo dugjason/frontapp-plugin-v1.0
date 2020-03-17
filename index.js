@@ -40,14 +40,12 @@ async function peerReviewDraft() {
   let message = messages.results[messages.results.length - 1];
 
   Front.createDraft({
-    //channelId: 'cha_g17v',
     cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
       body: `🌟Completeness: 👎 <br><br><br>
              🤖 Tone: 👎 <br><br><br>
              💯Correctness: 👍 <br><br><br>`
-
     },
     replyOptions: {
       type: 'reply',
