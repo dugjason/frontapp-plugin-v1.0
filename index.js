@@ -41,7 +41,7 @@ async function peerReviewDraft() {
 
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
-    cc: [{handle: 'kenji@frontapp.com', type: 'email'}],
+    cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
       body: `🌟Completeness: 👎
