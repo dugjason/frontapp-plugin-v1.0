@@ -40,7 +40,7 @@ async function peerReviewDraft() {
   let message = messages.results[messages.results.length - 1];
 
   Front.createDraft({
-    channelId: 'alt:address:jason@frontapp.com',
+    channelId: 'cha_g17v',
     cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
