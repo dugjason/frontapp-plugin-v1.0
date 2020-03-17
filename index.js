@@ -1,4 +1,5 @@
 Front.contextUpdates.subscribe(context => {
+  console.log('Context:', context);
   switch(context.type) {
     case 'noConversation':
       console.log('No conversation selected');
