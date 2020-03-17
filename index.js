@@ -1,4 +1,8 @@
+
 Front.contextUpdates.subscribe(context => {
+
+  document.getElementById("frontTeammate").innerHtml = context.teammate.name;
+
   console.log('Context:', context);
   switch(context.type) {
     case 'noConversation':
