@@ -37,10 +37,11 @@ async function peerReviewDraft() {
 
   console.log('Fetched messages: ', messages);
 
-  /*
+  let message = messages[messages.length - 1];
+
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
-    cc: 'kenji@frontapp.com',
+    cc: [{handle: 'kenji@frontapp.com', type: 'email'}],
     content: {
       type: 'html',
       body: `🌟Completeness: 👎
@@ -52,7 +53,7 @@ async function peerReviewDraft() {
     },
     replyOptions: {
       type: 'reply',
-      originalMessageId: ''
+      originalMessageId: message.id
     }
-  }); */
+  });
 }
