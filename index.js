@@ -31,3 +31,27 @@ function assign() {
 function unassign() {
   Front.assign(null);
 }
+
+function peerReviewDraft() {
+  Front.listMessages().then((err, res) => {
+    console.log(res);
+  })
+
+  Front.createDraft({
+    channelId: 'alt:address:jason@frontapp.com',
+    cc: 'kenji@frontapp.com',
+    content: {
+      type: 'html',
+      body: `🌟Completeness: 👎
+
+🤖 Tone: 👎
+
+💯Correctness: 👍`
+
+    },
+    replyOptions: {
+      type: 'reply',
+      originalMessageId: ''
+    }
+  });
+}
