@@ -44,14 +44,14 @@ async function peerReviewDraft() {
     //cc: ['kenji@frontapp.com'],
     content: {
       type: 'html',
-      body: `🌟Completeness: 👎 \n\n
-             🤖 Tone: 👎 \n\n
-             💯Correctness: 👍\n\n`
+      body: `🌟Completeness: 👎 <br><br>
+             🤖 Tone: 👎 <br><br>
+             💯Correctness: 👍 <br><br>`
 
-    } //,
-    //replyOptions: {
-    //  type: 'reply',
-    //  originalMessageId: message.id
-    //}
+    },
+    replyOptions: {
+      type: 'reply',
+      originalMessageId: message.id
+    }
   });
 }
