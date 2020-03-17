@@ -1,8 +1,11 @@
+let globalContext;
 
 Front.contextUpdates.subscribe(context => {
 
-  var displayTeammate = document.getElementById("frontTeammate");
-  displayTeammate.innerHTML = context.teammate.name;
+  globalContext = context;
+
+  var displayTeammate = document.getElementById('frontTeammate');
+  displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
 
   console.log('Context:', context);
   switch(context.type) {
@@ -20,3 +23,11 @@ Front.contextUpdates.subscribe(context => {
       break;
   }
 });
+
+function assign() {
+  Front.assign(globalContext.teammate.id);
+}
+
+function unassign() {
+  Front.assign(null);
+}
