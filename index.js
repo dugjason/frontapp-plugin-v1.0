@@ -35,6 +35,8 @@ function unassign() {
 function peerReviewDraft() {
   let messages = await Front.listMessages();
 
+  console.log('Fetched messages: ', messages);
+
   Front.createDraft({
     channelId: 'alt:address:jason@frontapp.com',
     cc: 'kenji@frontapp.com',
