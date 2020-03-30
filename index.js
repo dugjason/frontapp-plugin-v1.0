@@ -32,6 +32,10 @@ function unassign() {
   Front.assign(null);
 }
 
+function openUrl() {
+  Front.openUrl('https://frontapp.com');
+}
+
 async function peerReviewDraft() {
   let messages = await Front.listMessages();
 
