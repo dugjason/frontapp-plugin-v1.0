@@ -1,39 +1,6 @@
 let globalContext;
 
-
-try {
-  Front.contextUpdates.subscribe(async (context: any) => {
-    switch(context.type) {
-      case 'noConversation':
-        console.log('No conversation selected');
-        break;
-      case 'singleConversation':
-        //console.log('Selected conversation:', context.conversation);
-
-        try {
-          console.log(context.conversation);
-          await context.listMessages().then((results: ApplicationMessage) {
-            console.log('Results: ', results);
-          });
-        } catch (error) {
-          console.log('Error: ', error);
-        }
-
-        break;
-      case 'multiConversations':
-        console.log('Multiple conversations selected', context.conversations);
-        break;
-      default:
-        console.error(`Unsupported context type: ${context.type}`);
-        break;
-    }
-  });
-} catch (e) {
-  console.log('Catch-all error: ', e);
-}
-
-/*
-Front.contextUpdates.subscribe(async (context: any) => {
+Front.contextUpdates.subscribe(context => {
 
   globalContext = context;
 
@@ -50,7 +17,7 @@ Front.contextUpdates.subscribe(async (context: any) => {
 
       try {
         console.log(context.conversation);
-        await context.listMessages().then((results: ApplicationMessage) {
+        context.listMessages().then((results: ApplicationMessage) {
           console.log('Results: ', results);
         });
       } catch (error) {
@@ -66,7 +33,8 @@ Front.contextUpdates.subscribe(async (context: any) => {
       break;
   }
 });
-*/
+
+
 function assign() {
   Front.assign(globalContext.teammate.id);
 }
