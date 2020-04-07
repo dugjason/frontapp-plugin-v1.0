@@ -1,3 +1,5 @@
+console.log('Yes, this file was loaded');
+
 let globalContext;
 
 Front.contextUpdates.subscribe(context => {
