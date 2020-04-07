@@ -17,7 +17,7 @@ Front.contextUpdates.subscribe(context => {
 
       try {
         console.log(context.conversation);
-        context.listMessages().then((results) {
+        context.listMessages().then((results) => {
           console.log('Results: ', results);
         });
       } catch (error) {
