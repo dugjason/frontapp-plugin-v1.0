@@ -28,3 +28,10 @@ Front.contextUpdates.subscribe(context => {
       break;
   }
 });
+
+
+async function logContext() {
+  let messages = await Front.listMessages();
+
+  console.log('Fetched messages: ', messages);
+}
