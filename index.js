@@ -26,6 +26,7 @@ try {
       default:
         console.error(`Unsupported context type: ${context.type}`);
         break;
+    }
   });
 } catch (e) {
   console.log('Catch-all error: ', e);
