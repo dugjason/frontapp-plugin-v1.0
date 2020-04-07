@@ -47,6 +47,10 @@ function openUrl() {
   Front.openUrl('https://frontapp.com');
 }
 
+function openUrlInPopup() {
+  Front.openUrlInPopup('./popup.html');
+}
+
 async function peerReviewDraft() {
   let messages = await Front.listMessages();
 
