@@ -1,6 +1,6 @@
 let globalContext;
 
-Front.contextUpdates.subscribe(context => {
+Front.contextUpdates.subscribe(async (context: any) => {
 
   globalContext = context;
 
