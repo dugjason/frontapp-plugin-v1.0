@@ -48,7 +48,7 @@ function openUrl() {
 }
 
 function openUrlInPopup() {
-  Front.openUrlInPopup('./popup.html');
+  Front.openUrlInPopup('https://suspicious-wozniak-9e3a7e.netlify.com/popup.html');
 }
 
 async function peerReviewDraft() {
