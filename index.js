@@ -13,7 +13,17 @@ Front.contextUpdates.subscribe(context => {
       console.log('No conversation selected');
       break;
     case 'singleConversation':
-      console.log('Selected conversation:', context.conversation);
+      //console.log('Selected conversation:', context.conversation);
+
+      try {
+        console.log(context.conversation);
+        await context.listMessages().then((results: ApplicationMessage) {
+          console.log('Results: ', results);
+        });
+      } catch (error) {
+        console.log('Error: ', error);
+      }
+
       break;
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
