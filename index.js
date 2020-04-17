@@ -43,6 +43,20 @@ function unassign() {
   Front.assign(null);
 }
 
+async function insertDraftReply() {
+    let messageId = await getMessage();
+    await window.Front.createDraft({
+        content: {
+            body: 'Here\'s a draft!',
+            type: 'text'
+        },
+        replyOptions: {
+            type: 'reply',
+            originalMessageId: messageId
+        }
+    })
+}
+
 function openUrl() {
   Front.openUrl('https://frontapp.com');
 }
@@ -72,3 +86,15 @@ async function peerReviewDraft() {
     }
   });
 }
+
+
+
+async function getMessage() {
+    let list = await window.Front.listMessages();
+    let messages = list.results[0]['id'];
+    return messages;
+}
+
+
+
+
