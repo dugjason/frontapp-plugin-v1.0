@@ -44,6 +44,7 @@ function unassign() {
 }
 
 async function insertDraftReply() {
+  console.log('called insertDraftReply');
     let messageId = await getMessage();
     await window.Front.createDraft({
         content: {
