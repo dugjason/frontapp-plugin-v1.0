@@ -46,7 +46,7 @@ function unassign() {
 async function insertDraftReply() {
   console.log('called insertDraftReply');
     let messageId = await getMessage();
-    await window.Front.createDraft({
+    await Front.createDraft({
         content: {
             body: 'Here\'s a draft!',
             type: 'text'
@@ -91,7 +91,7 @@ async function peerReviewDraft() {
 
 
 async function getMessage() {
-    let list = await window.Front.listMessages();
+    let list = await Front.listMessages();
     let messageId = list.results[0]['id'];
     console.log(`returning message ID `, messageId);
     return messageId;
