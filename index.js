@@ -43,7 +43,7 @@ function unassign() {
   Front.assign(null);
 }
 
-function insertDraftReply() {
+async function insertDraftReply() {
   console.log('called insertDraftReply');
     let messageId = await getMessage();
     await Front.createDraft({
