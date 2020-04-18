@@ -43,7 +43,7 @@ function unassign() {
   Front.assign(null);
 }
 
-async function insertDraftReply() {
+function insertDraftReply() {
   console.log('called insertDraftReply');
     let messageId = await getMessage();
     await Front.createDraft({
@@ -91,10 +91,12 @@ async function peerReviewDraft() {
 
 
 async function getMessage() {
-    let list = await Front.listMessages();
-    let messageId = list.results[0]['id'];
-    console.log(`returning message ID `, messageId);
-    return messageId;
+  console.log('Called getMessage()');
+  let list = await Front.listMessages();
+  console.log('List: ', list);
+  let messageId = list.results[0]['id'];
+  console.log(`returning message ID `, messageId);
+  return messageId;
 }
 
 
