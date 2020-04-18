@@ -92,8 +92,9 @@ async function peerReviewDraft() {
 
 async function getMessage() {
     let list = await window.Front.listMessages();
-    let messages = list.results[0]['id'];
-    return messages;
+    let messageId = list.results[0]['id'];
+    console.log(`returning message ID `, messageId);
+    return messageId;
 }
 
 
