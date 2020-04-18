@@ -43,6 +43,19 @@ function unassign() {
   Front.assign(null);
 }
 
+function insertBasicDraft() {
+  Front.createDraft({
+        content: {
+            body: 'Here\'s a draft!',
+            type: 'text'
+        },
+        replyOptions: {
+            type: 'reply',
+            originalMessageId: 'msg_bnmrao3'
+        }
+    });
+}
+
 async function insertDraftReply() {
   console.log('called insertDraftReply');
     let messageId = await getMessage();
