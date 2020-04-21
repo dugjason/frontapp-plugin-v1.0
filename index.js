@@ -1,13 +1,13 @@
 let globalContext;
 
 Front.contextUpdates.subscribe(context => {
+  console.log('Context:', context);
 
   globalContext = context;
 
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
 
-  console.log('Context:', context);
   switch(context.type) {
     case 'noConversation':
       console.log('No conversation selected');
