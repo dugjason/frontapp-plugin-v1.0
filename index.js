@@ -1,5 +1,7 @@
 let globalContext;
 
+console.log('I loaded');
+
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
 
