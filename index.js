@@ -9,6 +9,8 @@ Front.contextUpdates.subscribe(context => {
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
 
+  assignButton.removeEventListener('click', _assign);
+
   switch(context.type) {
     case 'noConversation':
       console.log('No conversation selected');
@@ -26,8 +28,6 @@ Front.contextUpdates.subscribe(context => {
       }
 
       assignButton.addEventListener('click', function _assign() {
-        assignButton.removeEventListener('click', _assign);
-
         Front.assign(context.teammate.id)
       });
 
