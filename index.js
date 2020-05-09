@@ -25,8 +25,8 @@ Front.contextUpdates.subscribe(context => {
         console.log('Error: ', error);
       }
 
-      assignButton.removeEventListener('click', assign);
-      assignButton.addEventListener('click', assign, context);
+      assignButton.removeEventListener('click', () => Front.assign(context.teammate.id));
+      assignButton.addEventListener('click', () => Front.assign(context.teammate.id));
 
       break;
     case 'multiConversations':
