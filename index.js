@@ -1,4 +1,5 @@
 let globalContext;
+const assignButton = document.getElementById('assign');
 
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
@@ -23,6 +24,9 @@ Front.contextUpdates.subscribe(context => {
       } catch (error) {
         console.log('Error: ', error);
       }
+
+      assignButton.removeEventListener('click');
+      assignButton.addEventListener('click', () => Front.assign(context.teammate.id));
 
       break;
     case 'multiConversations':
