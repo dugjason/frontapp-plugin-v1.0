@@ -14,7 +14,7 @@ Front.contextUpdates.subscribe(context => {
       console.log('No conversation selected');
       break;
     case 'singleConversation':
-      //console.log('Selected conversation:', context.conversation);
+      console.log('Selected conversation context:', context);
 
       try {
         console.log(context.conversation);
