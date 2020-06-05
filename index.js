@@ -67,17 +67,18 @@ function insertBasicDraft() {
 
 async function insertDraftReply() {
   console.log('called insertDraftReply');
-    let messageId = await getMessage();
-    await Front.createDraft({
-        content: {
-            body: 'Here\'s a draft!',
-            type: 'text'
-        },
-        replyOptions: {
-            type: 'reply',
-            originalMessageId: messageId
-        }
-    })
+  let messageId = await getMessage();
+  let draft = await Front.createDraft({
+      content: {
+          body: 'Here\'s a draft!',
+          type: 'text'
+      },
+      replyOptions: {
+          type: 'reply',
+          originalMessageId: messageId
+      }
+  });
+  console.log('Draft Created: ', draft);
 }
 
 function openUrl() {
