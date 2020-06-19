@@ -81,6 +81,11 @@ async function insertDraftReply() {
   console.log('Draft Created: ', draft);
 }
 
+async function listTags() {
+  let tags = await Front.listTags();
+  console.log('List of Tags: ', tags);
+}
+
 function openUrl() {
   Front.openUrl('https://frontapp.com');
 }
