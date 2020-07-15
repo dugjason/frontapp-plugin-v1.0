@@ -86,6 +86,16 @@ async function listTags() {
   console.log('List of Tags: ', tags);
 }
 
+async function applyTag1() {
+  let tagged = Front.tag(['tag_35077']);
+  console.log('Tagging result: ', tagged);
+}
+
+async function applyTag2() {
+  let tagged = globalContext.tag(['tag_35077']);
+  console.log('Tagging result: ', tagged);
+}
+
 function openUrl() {
   Front.openUrl('https://frontapp.com');
 }
