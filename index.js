@@ -9,7 +9,8 @@ Front.contextUpdates.subscribe(context => {
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
 
-  assignButton.removeEventListener('click', _assign);
+  // This is causing console errors
+  //assignButton.removeEventListener('click', _assign);
 
   switch(context.type) {
     case 'noConversation':
@@ -92,7 +93,7 @@ async function applyTag1() {
 }
 
 async function applyTag2() {
-  let tagged = globalContext.tag(['tag_35077']);
+  let tagged = globalContext.conversation.tag(['tag_35077']);
   console.log('Tagging result: ', tagged);
 }
 
