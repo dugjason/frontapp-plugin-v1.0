@@ -53,6 +53,10 @@ function unassign() {
   Front.assign(null);
 }
 
+function openConfirm() {
+  confirm("This is a confirm dialog");
+}
+
 function insertBasicDraft() {
   Front.createDraft({
         content: {
