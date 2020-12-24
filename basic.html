@@ -22,7 +22,7 @@
           console.log('Selected conversation context:', context);
 
           let displayContact = document.getElementById('contact');
-          displayTeammate.innerHTML = 'Contact email is ' + context.conversation.recipient.handle;
+          displayContact.innerHTML = 'Contact email is ' + context.conversation.recipient.handle;
 
         case 'multiConversations':
           console.log('Multiple conversations selected', context.conversations);
