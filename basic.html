@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <title>Basic Front Plugin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="//dl.frontapp.com/libs/plugin-sdk-1.0.1.min.js"></script>
+</head>
+
+<body>
+  <h3 id="frontTeammate"></h3>
+  <p id="frontTeammate"></p>
+
+  <h3></h3>
+  <p id="contact"></p>
+
+  <script type="text/javascript">
+    Front.contextUpdates.subscribe(context => {
+      console.log('Context:', context);
+
+      let displayTeammate = document.getElementById('frontTeammate');
+      displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
+
+      switch(context.type) {
+        case 'noConversation':
+          console.log('No conversation selected');
+          break;
+
+        case 'singleConversation':
+          console.log('Selected conversation context:', context);
+
+          let displayContact = document.getElementById('contact');
+          displayTeammate.innerHTML = 'Contact email is ' + context.conversation.recipient.handle;
+
+        case 'multiConversations':
+          console.log('Multiple conversations selected', context.conversations);
+          break;
+
+        default:
+          console.error(`Unsupported context type: ${context.type}`);
+          break;
+      }
+    });
+  </script>
+</body>
+
+</html>
