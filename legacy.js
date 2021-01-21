@@ -11,6 +11,13 @@ Front.on('conversation', function (data) {
 
   // Set the conversation state.
   hasConversation = true;
+
+  Front.fetchInboxes(function (inboxes) {
+    if (!inboxes)
+      return;
+
+    console.log('INBOXES: ', inboxes);
+  });
 });
 
 // Listen for the `no_conversation` event.  This can happen when opened to Inbox Zero.
