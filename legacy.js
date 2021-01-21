@@ -17,6 +17,8 @@ Front.on('conversation', function (data) {
       return;
 
     console.log('INBOXES: ', inboxes);
+    let slugs = inboxes.map(inbox => return inbox.alias);
+    console.log(slugs);
   });
 });
 
