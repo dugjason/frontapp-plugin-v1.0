@@ -1,5 +1,6 @@
 let globalContext;
 const assignButton = document.getElementById('assign');
+const updateDraftButton = document.getElementById('updateDraft');
 
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
@@ -32,6 +33,12 @@ Front.contextUpdates.subscribe(context => {
         Front.assign(context.teammate.id)
       });
 
+      updateDraftButton.addEventListener('click', async () => {
+        let draftContent = await fetchDemoData()
+
+        Front.updateDraft(context.conversation.draftId, draftContent.body)
+      })
+
       break;
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
@@ -41,6 +48,12 @@ Front.contextUpdates.subscribe(context => {
       break;
   }
 });
+
+async function fetchDemoData() {
+  let response = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+
+  return response.json()
+}
 
 
 function assign(context) {
@@ -84,6 +97,10 @@ async function insertDraftReply() {
       }
   });
   console.log('Draft Created: ', draft);
+}
+
+async function updateDraft() {
+
 }
 
 async function listTags() {
