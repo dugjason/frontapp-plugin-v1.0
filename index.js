@@ -34,6 +34,7 @@ Front.contextUpdates.subscribe(context => {
       });
 
       updateDraftButton.addEventListener('click', async () => {
+        console.log('CONTEXT from updatedraft: ', context)
         let draftContent = await fetchDemoData()
 
         Front.updateDraft(
