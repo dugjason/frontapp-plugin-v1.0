@@ -37,8 +37,8 @@ Front.contextUpdates.subscribe(context => {
         let draftContent = await fetchDemoData()
 
         Front.updateDraft(
-          draftId: context.conversation.draftId, 
-          update: {
+          context.conversation.draftId, 
+          {
             content: {
               body: draftContent.body,
               type: 'text'
