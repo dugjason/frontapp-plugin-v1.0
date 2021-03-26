@@ -36,7 +36,15 @@ Front.contextUpdates.subscribe(context => {
       updateDraftButton.addEventListener('click', async () => {
         let draftContent = await fetchDemoData()
 
-        Front.updateDraft(context.conversation.draftId, draftContent.body)
+        Front.updateDraft(
+          draftId: context.conversation.draftId, 
+          update: {
+            content: {
+              body: draftContent.body,
+              type: 'text'
+            },
+            updateMode: 'insert'
+          })
       })
 
       break;
