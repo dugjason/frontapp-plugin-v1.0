@@ -1,6 +1,7 @@
 let globalContext;
 const assignButton = document.getElementById('assign');
 const updateDraftButton = document.getElementById('updateDraft');
+const logDraftButton = document.getElementById('logDraft');
 
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
@@ -45,6 +46,17 @@ Front.contextUpdates.subscribe(context => {
             },
             updateMode: 'insert'
           })
+      })
+
+      logDraftButton.addEventListener('click', async () => {
+        let draftID = context.conversation.draftId
+
+        if (!draftId){
+          console.log('Conversation has no draft')
+        } else {
+          let draft = await Front.fetchDraft(draftId)
+          console.log('DRAFT: ', draft)
+        }
       })
 
       break;
