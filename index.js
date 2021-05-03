@@ -50,7 +50,7 @@ Front.contextUpdates.subscribe(context => {
 
       logDraftButton.addEventListener('click', async () => {
         console.log('RUNNING logDraftButton()', context.conversation)
-        let draftID = context.conversation.draftId
+        let draftId = context.conversation.draftId
 
         if (!draftId){
           console.log('Conversation has no draft')
