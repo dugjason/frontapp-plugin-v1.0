@@ -49,6 +49,7 @@ Front.contextUpdates.subscribe(context => {
       })
 
       logDraftButton.addEventListener('click', async () => {
+        console.log('RUNNING logDraftButton()', context.conversation)
         let draftID = context.conversation.draftId
 
         if (!draftId){
