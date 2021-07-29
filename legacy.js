@@ -31,9 +31,22 @@ Front.on('no_conversation', function () {
 });
 
 function openConfirm() {
-  Front.confirm("This is a confirm dialog");
+  Front.confirm({
+    title: 'Title of the confirm dialog',
+    message: 'Body of the dialog.',
+    okTitle: 'Label of the OK button (optional)',
+    cancelTitle: 'Label of the cancel button (optional)'
+  }, function (confirmed) {
+    console.log('User confirmed?', confirmed);
+  });
 }
 
 function openAlert() {
-  Front.alert("This is an alert dialog");
+  Front.alert({
+    title: 'Title of the alert',
+    message: 'Body of the alert.',
+    okTitle: 'Label of the OK button (optional)'
+  }, function () {
+    console.log('User clicked OK.');
+  });
 }
