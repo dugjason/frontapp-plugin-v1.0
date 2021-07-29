@@ -91,6 +91,10 @@ function openConfirm() {
   confirm("This is a confirm dialog");
 }
 
+function openAlert() {
+  alert("This is an alert dialog");
+}
+
 function insertBasicDraft() {
   Front.createDraft({
         content: {

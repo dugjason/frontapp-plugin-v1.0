@@ -29,3 +29,11 @@ Front.on('no_conversation', function () {
   // Set the conversation state.
   hasConversation = false;
 });
+
+function openConfirm() {
+  Front.confirm("This is a confirm dialog");
+}
+
+function openAlert() {
+  Front.alert("This is an alert dialog");
+}
