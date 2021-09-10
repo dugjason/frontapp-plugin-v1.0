@@ -151,6 +151,12 @@ function openUrlInPopup() {
   Front.openUrlInPopup('https://suspicious-wozniak-9e3a7e.netlify.com/popup.html');
 }
 
+async function listMessages() {
+  let messages = await Front.listMessages();
+
+  console.log('listMessages(): ', messages);
+}
+
 async function peerReviewDraft() {
   let messages = await Front.listMessages();
 
