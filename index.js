@@ -18,13 +18,14 @@ Front.contextUpdates.subscribe(context => {
     case 'noConversation':
       console.log('No conversation selected');
       break;
+
     case 'singleConversation':
       console.log('Selected conversation context:', context);
 
       try {
-        console.log(context.conversation);
+        console.log('context.conversation:', context.conversation);
         context.listMessages().then((results) => {
-          console.log('Results: ', results);
+          console.log('listMessages(): ', results);
         });
       } catch (error) {
         console.log('Error: ', error);
@@ -61,9 +62,11 @@ Front.contextUpdates.subscribe(context => {
       })
 
       break;
+      
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
       break;
+
     default:
       console.error(`Unsupported context type: ${context.type}`);
       break;
@@ -190,4 +193,9 @@ async function getMessage() {
   return messageId;
 }
 
+async function search() {
+  console.log('Called Front.Search()')
+  let results = await Front.search('api');
+  console.log('Search results: ', results)
+}
 
