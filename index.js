@@ -63,7 +63,7 @@ Front.contextUpdates.subscribe(context => {
       })
 
       contextExternalURL.addEventListener('click', async () => {
-        Front.openUrlInPopup(`https://suspicious-wozniak-9e3a7e.netlify.com/popup.html?id=${context.conversation.id}`);
+        Front.openUrl(`https://suspicious-wozniak-9e3a7e.netlify.com/popup.html?id=${context.conversation.id}`);
       })
 
       break;
