@@ -2,6 +2,7 @@ let globalContext;
 const assignButton = document.getElementById('assign');
 const updateDraftButton = document.getElementById('updateDraft');
 const logDraftButton = document.getElementById('logDraft');
+const contextExternalURL = document.getElementById('contextExternalURL');
 
 Front.contextUpdates.subscribe(context => {
   console.log('Context:', context);
