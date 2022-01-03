@@ -61,6 +61,10 @@ Front.contextUpdates.subscribe(context => {
         }
       })
 
+      contextExternalURL.addEventListener('click', async () => {
+        Front.openUrlInPopup(`https://suspicious-wozniak-9e3a7e.netlify.com/popup.html?id=${context.conversation.id}`);
+      })
+
       break;
       
     case 'multiConversations':
@@ -151,9 +155,7 @@ function openUrl() {
 }
 
 function openUrlInPopup() {
-  //Front.openUrlInPopup('https://suspicious-wozniak-9e3a7e.netlify.com/popup.html');
-  Front.openUrlInPopup("https://devbhcc.complianceds.com/Login.aspx", { height: 700, width: 700 });
-
+  Front.openUrlInPopup('https://suspicious-wozniak-9e3a7e.netlify.com/popup.html');
 }
 
 async function listMessages() {
