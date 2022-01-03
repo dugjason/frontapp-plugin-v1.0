@@ -153,6 +153,7 @@ function openUrl() {
 function openUrlInPopup() {
   //Front.openUrlInPopup('https://suspicious-wozniak-9e3a7e.netlify.com/popup.html');
   Front.openUrlInPopup("https://devbhcc.complianceds.com/Login.aspx", { height: 700, width: 700 });
+
 }
 
 async function listMessages() {
