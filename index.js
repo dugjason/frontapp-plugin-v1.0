@@ -165,6 +165,11 @@ async function listMessages() {
   console.log('listMessages(): ', messages);
 }
 
+async function listRecipients() {
+  let recipients = await Front.listRecipients();
+  console.log('listRecipients():', recipients);
+}
+
 async function peerReviewDraft() {
   let messages = await Front.listMessages();
 
