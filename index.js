@@ -215,14 +215,17 @@ async function downloadAttachment() {
   const attachmentId = message.content.attachments[0].id
 
   Front.downloadAttachment(message.id, attachmentId).then((file) => {
-    console.log('TYPEOF FILE', typeof file)
-    console.log('FILE', file)
     const reader = new FileReader()
     reader.onload = function (pEvent) {
-      console.log(event.target.result)
+      console.log('1', event.target.result)
       console.log('--')
-      console.log(JSON.parse(reader.result))
+
+      console.log('2', JSON.parse(event.target.result))
+      console.log('--')
+
+      console.log('3', JSON.parse(reader.result))
     }
+
     reader.readAsText(file)
   })
 }
