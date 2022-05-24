@@ -218,7 +218,9 @@ async function downloadAttachment() {
     const reader = new FileReader()
     reader.onload = function (pEvent) {
       console.log('pEvent: ', pEvent)
-      console.log('1', event.target.result)
+      console.log('1-event', event)
+      console.log('1-event-target', event.target)
+      console.log('1-event-target-result', event.target.result)
       console.log('--')
 
       console.log('2', JSON.parse(event.target.result))
