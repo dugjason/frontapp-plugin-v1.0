@@ -209,7 +209,7 @@ async function search() {
 
 async function downloadAttachment() {
   let messages = await Front.listMessages()
-  let message = messages[0]
+  let message = messages.results[0]
   console.log('message', message)
   Front.downloadAttachment(message.id, fileId).then((file) => {
     console.log('FILE', file)
