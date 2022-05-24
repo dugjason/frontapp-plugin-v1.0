@@ -211,7 +211,7 @@ async function downloadAttachment() {
   let messages = await Front.listMessages()
   let message = messages[0]
   console.log('message', message)
-  FrontApp.downloadAttachment(message.id, fileId).then((file) => {
+  Front.downloadAttachment(message.id, fileId).then((file) => {
     console.log('FILE', file)
     const reader = new FileReader()
     reader.onload = function (pEvent) {
