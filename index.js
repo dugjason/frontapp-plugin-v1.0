@@ -217,6 +217,7 @@ async function downloadAttachment() {
   Front.downloadAttachment(message.id, attachmentId).then((file) => {
     const reader = new FileReader()
     reader.onload = function (pEvent) {
+      console.log('pEvent: ', pEvent)
       console.log('1', event.target.result)
       console.log('--')
 
