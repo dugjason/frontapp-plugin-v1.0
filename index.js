@@ -192,8 +192,6 @@ async function peerReviewDraft() {
   });
 }
 
-
-
 async function getMessage() {
   console.log('Called getMessage()');
   let list = await Front.listMessages();
@@ -209,3 +207,17 @@ async function search() {
   console.log('Search results: ', results)  
 }
 
+async function downloadAttachment() {
+  let messages = await Front.listMessages()
+  let message = messages[0]
+  console.log('message', message)
+  FrontApp.downloadAttachment(message.id, fileId).then((file) => {
+    console.log('FILE', file)
+    const reader = new FileReader()
+    reader.onload = function (pEvent) {
+      console.log('pEvent', pEvent)
+      console.log(event.target.result)
+    }
+    reader.readAsText(file)
+  })
+}
