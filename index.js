@@ -4,13 +4,22 @@ const updateDraftButton = document.getElementById('updateDraft');
 const logDraftButton = document.getElementById('logDraft');
 const contextExternalURL = document.getElementById('contextExternalURL');
 
-Front.contextUpdates.subscribe(context => {
+Front.contextUpdates.subscribe(async (context) => {
   console.log('Context:', context);
 
   globalContext = context;
+/*
+  const relayURL = 'https://webhook.site/8a914b1c-1c5d-4812-9e40-ca9d0df29fac'
+
+  await Front.relayHTTP({ 
+    verb: 'GET', 
+    url: relayURL, 
+    body: {}, 
+    headers: {} 
+  })  */
 
   var displayTeammate = document.getElementById('frontTeammate');
-  displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
+  displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0];
 
   // This is causing console errors
   //assignButton.removeEventListener('click', _assign);
@@ -116,9 +125,14 @@ function insertBasicDraft() {
     });
 }
 
+async function getLastMessageID() {
+  let messages = await Front.listMessages();
+  return messages.results[messages.results.length - 1]['id'];
+}
+
+
 async function insertDraftReply() {
-  console.log('called insertDraftReply');
-  let messageId = await getMessage();
+  let messageId = await getLastMessageID();
   let draft = await Front.createDraft({
       content: {
           body: 'Here\'s a draft!',
@@ -129,7 +143,6 @@ async function insertDraftReply() {
           originalMessageId: messageId
       }
   });
-  console.log('Draft Created: ', draft);
 }
 
 async function updateDraft() {
@@ -207,13 +220,20 @@ async function search() {
   console.log('Search results: ', results)  
 }
 
-async function downloadAttachment() {
+async function downloadAttachments() {
   let messages = await Front.listMessages()
   let message = messages.results[0]
   console.log('message', message)
 
-  const attachmentId = message.content.attachments[0].id
+  const attachmentIds = message.content.attachments.map((a) => a.id)
 
+  attachmentIds.forEach(async (attachment_id) => {
+    await downloadSingleAttachment(message.id, attachment_id)
+  })
+
+  //const attachmentId = message.content.attachments[0].id
+
+  /*
   Front.downloadAttachment(message.id, attachmentId).then((file) => {
     const reader = new FileReader()
     reader.onload = function (pEvent) {
@@ -231,4 +251,24 @@ async function downloadAttachment() {
 
     reader.readAsText(file)
   })
+  */
 }
+
+async function downloadSingleAttachment(msg_id, attachment_id) {
+  const file = await Front.downloadAttachment(msg_id, attachment_id)
+
+  const fr = new FileReader();
+  
+  fr.addEventListener('load', e => {
+    console.log(`File: ${file.name}. Value: `, e.target.result)
+  });
+  
+  fr.readAsText(file);
+}
+
+
+
+
+
+
+
