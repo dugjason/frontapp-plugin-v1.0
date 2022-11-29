@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@frontapp/plugin-sdk": "1.3.0"
+  }
+}
