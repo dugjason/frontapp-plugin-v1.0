@@ -11,11 +11,11 @@ Front.contextUpdates.subscribe(async (context) => {
 /*
   const relayURL = 'https://webhook.site/8a914b1c-1c5d-4812-9e40-ca9d0df29fac'
 
-  await Front.relayHTTP({ 
-    verb: 'GET', 
-    url: relayURL, 
-    body: {}, 
-    headers: {} 
+  await Front.relayHTTP({
+    verb: 'GET',
+    url: relayURL,
+    body: {},
+    headers: {}
   })  */
 
   var displayTeammate = document.getElementById('frontTeammate');
@@ -49,7 +49,7 @@ Front.contextUpdates.subscribe(async (context) => {
         let draftContent = await fetchDemoData()
 
         Front.updateDraft(
-          context.conversation.draftId, 
+          context.conversation.draftId,
           {
             content: {
               body: draftContent.body,
@@ -76,7 +76,7 @@ Front.contextUpdates.subscribe(async (context) => {
       })
 
       break;
-      
+
     case 'multiConversations':
       console.log('Multiple conversations selected', context.conversations);
       break;
@@ -123,6 +123,31 @@ function insertBasicDraft() {
             originalMessageId: 'msg_bnmrao3'
         }
     });
+}
+
+async function insertDraftWithFile() {
+  const file = await getFileFromUrl('https://picsum.photo/200/300', 'file_from_url.jpeg');
+  console.log(file);
+
+  const draft = await Front.createDraft({
+    content: {
+        body: 'Here\'s a draft!',
+        type: 'text'
+    },
+    attachments: [file],
+  });
+
+  console.log(draft);
+}
+
+async function getFileFromUrl(url, name, defaultType = 'image/jpeg') {
+  const response = await fetch(url);
+  const data = await response.blob ();
+  const file = new File( [data], name, {
+    type: data.type || defaultType,
+  });
+  console.log(file);
+  return file;
 }
 
 async function getLastMessageID() {
@@ -217,7 +242,7 @@ async function getMessage() {
 async function search() {
   console.log('Called Front.Search()')
   let results = await Front.search('api');
-  console.log('Search results: ', results)  
+  console.log('Search results: ', results)
 }
 
 async function downloadAttachments() {
@@ -258,11 +283,11 @@ async function downloadSingleAttachment(msg_id, attachment_id) {
   const file = await Front.downloadAttachment(msg_id, attachment_id)
 
   const fr = new FileReader();
-  
+
   fr.addEventListener('load', e => {
     console.log(`File: ${file.name}. Value: `, e.target.result)
   });
-  
+
   fr.readAsText(file);
 }
 
