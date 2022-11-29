@@ -126,7 +126,7 @@ function insertBasicDraft() {
 }
 
 async function insertDraftWithFile() {
-  const file = await getFileFromUrl('https://picsum.photo/200/300', 'file_from_url.jpeg');
+  const file = await getFileFromUrl('https://picsum.photos/200/300', 'file_from_url.jpeg');
   console.log(file);
 
   const draft = await Front.createDraft({
