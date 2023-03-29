@@ -1,3 +1,4 @@
+var Front = require('@frontapp/ui-sdk');
 let globalContext;
 const assignButton = document.getElementById('assign');
 const updateDraftButton = document.getElementById('updateDraft');
@@ -46,7 +47,9 @@ Front.contextUpdates.subscribe(async (context) => {
       });
 
       updateDraftButton.addEventListener('click', async () => {
-        let draftContent = await fetchDemoData()
+        let draftContent = await fetchDemoData();
+
+        console.log('Updateing draft with ID', context.conversation.draftId);
 
         Front.updateDraft(
           context.conversation.draftId,
@@ -55,7 +58,7 @@ Front.contextUpdates.subscribe(async (context) => {
               body: draftContent.body,
               type: 'text'
             },
-            updateMode: 'insert'
+            updateMode: 'replace'
           })
       })
 
@@ -114,15 +117,15 @@ function openAlert() {
 
 function insertBasicDraft() {
   Front.createDraft({
-        content: {
-            body: 'Here\'s a draft!',
-            type: 'text'
-        },
-        replyOptions: {
-            type: 'reply',
-            originalMessageId: 'msg_bnmrao3'
-        }
-    });
+      content: {
+          body: 'Here\'s a draft!',
+          type: 'text'
+      },
+      replyOptions: {
+          type: 'reply',
+          originalMessageId: 'msg_bnmrao3'
+      }
+  });
 }
 
 async function insertDraftWithFile() {
