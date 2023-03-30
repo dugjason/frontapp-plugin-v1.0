@@ -49,7 +49,7 @@ Front.contextUpdates.subscribe(async (context) => {
       updateDraftButton.addEventListener('click', async () => {
         let draftContent = await fetchDemoData();
 
-        console.log('Updateing draft with ID', context.conversation.draftId);
+        console.log('Updating draft with ID', context.conversation.draftId);
 
         Front.updateDraft(
           context.conversation.draftId,
@@ -94,6 +94,26 @@ async function fetchDemoData() {
   let response = await fetch('https://jsonplaceholder.typicode.com/posts/1')
 
   return response.json()
+}
+
+async function updateDraft(context, updateMode) {
+  if (!['insert', 'replace'].includes(updateMode)) {
+    throw new Error('Invalid draft updateMode');
+  }
+  let draftContent = await fetchDemoData();
+
+  console.log('Updating draft with ID', globalContext.conversation.draftId);
+
+  await Front.updateDraft(
+    globalContext.conversation.draftId,
+    {
+      content: {
+        body: draftContent.body,
+        type: 'text'
+      },
+      updateMode
+    })
+
 }
 
 
