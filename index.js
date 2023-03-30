@@ -97,22 +97,31 @@ async function fetchDemoData() {
 }
 
 async function updateDraft(context, updateMode) {
+  console.log('DEBUG 1', context, updateMode)
   if (!['insert', 'replace'].includes(updateMode)) {
+    console.log('DEBUG 2')
     throw new Error('Invalid draft updateMode');
   }
+  console.log('DEBUG 3')
   let draftContent = await fetchDemoData();
-
+  console.log('DEBUG 4')
   console.log('Updating draft with ID', globalContext.conversation.draftId);
 
-  await Front.updateDraft(
-    globalContext.conversation.draftId,
-    {
+  try {
+
+    await Front.updateDraft(
+      globalContext.conversation.draftId,
+      {
       content: {
         body: draftContent.body,
         type: 'text'
       },
       updateMode
-    })
+    });
+    console.log('DEBUG 5')
+  } catch (e) {
+    console.error('e')
+  }
 
 }
 
