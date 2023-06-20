@@ -277,7 +277,7 @@ async function getMessage() {
 
 async function search() {
   console.log('Called Front.Search()')
-  let results = await Front.search('api');
+  let results = await Front.search('inbox:inb_pee attachment');
   console.log('Search results: ', results)
 }
 
