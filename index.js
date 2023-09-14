@@ -4,20 +4,12 @@ const assignButton = document.getElementById('assign');
 const updateDraftButton = document.getElementById('updateDraft');
 const logDraftButton = document.getElementById('logDraft');
 const contextExternalURL = document.getElementById('contextExternalURL');
+const selectedConversation = document.getElementById('selectedConversation');
 
 Front.contextUpdates.subscribe(async (context) => {
   console.log('Context:', context);
 
   globalContext = context;
-/*
-  const relayURL = 'https://webhook.site/8a914b1c-1c5d-4812-9e40-ca9d0df29fac'
-
-  await Front.relayHTTP({
-    verb: 'GET',
-    url: relayURL,
-    body: {},
-    headers: {}
-  })  */
 
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0];
@@ -34,17 +26,16 @@ Front.contextUpdates.subscribe(async (context) => {
     case 'singleConversation':
       console.log('Selected conversation context:', context);
 
+      console.log('context.conversation:', context.conversation);
       try {
-        console.log('context.conversation:', context.conversation);
-        var selectedConversation = document.getElementById('selectedConversation');
-        selectedConversation.innerHTML = 'Selected conv: ' + context.conversation.id;
+        // selectedConversation.innerHTML = 'Selected conv: ' + context.conversation.id;
 
-        context.listMessages().then((messages) => {
-          const formattedResults = messages.results.map((message) => {
-            return {id: message.id, body: message.content?.body}
-          })
-          console.log('listMessages(): ', formattedResults);
-        });
+        const messages = await context.listMessages();
+        const formattedResults = messages.results.map((message) => {
+          return {id: message.id, body: message.content?.body}
+        })
+        console.log('listMessages() snippet: ', formattedResults);
+
       } catch (error) {
         console.log('Error: ', error);
       }
