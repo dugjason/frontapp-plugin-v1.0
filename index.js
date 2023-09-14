@@ -25,11 +25,11 @@ Front.contextUpdates.subscribe(async (context) => {
 
     case 'singleConversation':
       console.log('Selected conversation context:', context);
-
       console.log('context.conversation:', context.conversation);
-      try {
-        // selectedConversation.innerHTML = 'Selected conv: ' + context.conversation.id;
 
+      selectedConversation.innerHTML = 'Selected conv: ' + context.conversation.id;
+
+      try {
         const messages = await context.listMessages();
         const formattedResults = messages.results.map((message) => {
           return {id: message.id, body: message.content?.body}
