@@ -35,8 +35,11 @@ Front.contextUpdates.subscribe(async (context) => {
 
       try {
         console.log('context.conversation:', context.conversation);
-        context.listMessages().then((results) => {
-          console.log('listMessages(): ', results);
+        context.listMessages().then((messages) => {
+          const formattedResults = messages.results.map((message) => {
+            return {id: message.id, body: message.content?.body}
+          })
+          console.log('listMessages(): ', formattedResults);
         });
       } catch (error) {
         console.log('Error: ', error);
