@@ -32,7 +32,11 @@ Front.contextUpdates.subscribe(async (context) => {
       try {
         const messages = await context.listMessages();
         const formattedResults = messages.results.map((message) => {
-          return {id: message.id, body: message.content?.body}
+          return {
+            id: message.id,
+            body: message.content?.body,
+            blurb: message.blurb
+          }
         })
         console.log('listMessages() snippet: ', formattedResults);
 
@@ -275,7 +279,7 @@ async function getMessage() {
 
 async function search() {
   console.log('Called Front.Search()')
-  let results = await Front.search('inbox:inb_pee attachment');
+  let results = await Front.search(`id:${globalContext.conversation.id}`);
   console.log('Search results: ', results)
 }
 
