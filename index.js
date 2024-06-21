@@ -18,7 +18,7 @@ Front.contextUpdates.subscribe(async (context) => {
   // This is causing console errors
   //assignButton.removeEventListener('click', _assign);
 
-  switch(context.type) {
+  switch (context.type) {
     case 'noConversation':
       console.log('No conversation selected');
       break;
@@ -68,7 +68,7 @@ Front.contextUpdates.subscribe(async (context) => {
         console.log('RUNNING logDraftButton()', context.conversation)
         let draftId = context.conversation.draftId
 
-        if (!draftId){
+        if (!draftId) {
           console.log('Conversation has no draft')
         } else {
           let draft = await Front.fetchDraft(draftId)
@@ -114,12 +114,12 @@ async function updateDraft(context, updateMode) {
     await Front.updateDraft(
       globalContext.conversation.draftId,
       {
-      content: {
-        body: draftContent.body,
-        type: 'text'
-      },
-      updateMode
-    });
+        content: {
+          body: draftContent.body,
+          type: 'text'
+        },
+        updateMode
+      });
     console.log('DEBUG 5')
   } catch (e) {
     console.error('e')
@@ -148,15 +148,25 @@ function openAlert() {
 
 function insertBasicDraft() {
   Front.createDraft({
-      content: {
-          body: 'Here\'s a draft!',
-          type: 'text'
-      },
-      replyOptions: {
-          type: 'reply',
-          originalMessageId: 'msg_bnmrao3'
-      }
+    content: {
+      body: 'Here\'s a draft!',
+      type: 'text'
+    },
+    replyOptions: {
+      type: 'reply',
+      originalMessageId: 'msg_bnmrao3'
+    }
   });
+}
+function createDraft() {
+  Front.createDraft({
+    content: {
+      body: '<p>Here\'s a draft!</p>',
+      type: 'html'
+    },
+    subject: "Draft Subject",
+    to: ["recipient@example.com"],
+  })
 }
 
 async function insertDraftWithFile() {
@@ -169,8 +179,8 @@ async function insertDraftWithFile() {
 
   const draft = await Front.createDraft({
     content: {
-        body: 'Here\'s a draft!',
-        type: 'text'
+      body: 'Here\'s a draft!',
+      type: 'text'
     },
     attachments: [file],
   });
@@ -180,8 +190,8 @@ async function insertDraftWithFile() {
 
 async function getFileFromUrl(url, name, defaultType = 'image/jpeg') {
   const response = await fetch(url);
-  const data = await response.blob ();
-  const file = new File( [data], name, {
+  const data = await response.blob();
+  const file = new File([data], name, {
     type: data.type || defaultType,
   });
   console.log(file);
@@ -197,14 +207,14 @@ async function getLastMessageID() {
 async function insertDraftReply() {
   let messageId = await getLastMessageID();
   let draft = await Front.createDraft({
-      content: {
-          body: 'Here\'s a draft!',
-          type: 'text'
-      },
-      replyOptions: {
-          type: 'reply',
-          originalMessageId: messageId
-      }
+    content: {
+      body: 'Here\'s a draft!',
+      type: 'text'
+    },
+    replyOptions: {
+      type: 'reply',
+      originalMessageId: messageId
+    }
   });
 }
 
@@ -278,8 +288,9 @@ async function getMessage() {
 }
 
 async function search() {
-  console.log('Called Front.Search()')
-  let results = await Front.search(`id:${globalContext.conversation.id}`);
+  const query = `id:${globalContext.conversation.id}`;
+  console.log(`Called Front.Search(${query})`)
+  let results = await Front.search(query);
   console.log('Search results: ', results)
 }
 

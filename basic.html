@@ -10,8 +10,9 @@
     Front.contextUpdates.subscribe(context => {
       console.log('Context:', context);
 
+      let displayConversationIds = document.getElementById('selectedConversations');
       let displayTeammate = document.getElementById('frontTeammate');
-      displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0] + ' 👋';
+      displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0];
 
       switch(context.type) {
         case 'noConversation':
@@ -22,10 +23,14 @@
           console.log('Selected conversation context:', context);
 
           let displayContact = document.getElementById('contact');
-          displayContact.innerHTML = 'Contact email is ' + context.conversation.recipient.handle;
+          displayContact.innerHTML = context.conversation.recipient.handle;
+
+          displayConversationIds.innerHTML = context.conversation.id;
+          break;
 
         case 'multiConversations':
           console.log('Multiple conversations selected', context.conversations);
+          displayConversationIds.innerHTML = JSON.stringify(context.conversations.map(conversation => { return conversation.id }));
           break;
 
         default:
@@ -42,6 +47,10 @@
 
   <h3>Contact email</h3>
   <p id="contact"></p>
+
+  <h3>ID(s) of selected conversation(s)</h3>
+  <p id="selectedConversations"></p>
+
 </body>
 
 </html>
