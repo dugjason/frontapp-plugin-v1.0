@@ -6,9 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="//dl.frontapp.com/libs/plugin-sdk-1.4.0.min.js"></script>
   <meta http-equiv="Content-Security-Policy" content="
-      frame-ancestors 'self' mailto: tel: https://*.frontapp.com https://*.frontapplication.com; 
-      frame-src 'self' tel:;
-      default-src 'self' tel:;">
+  frame-ancestors 'self' https://*.frontapp.com https://*.frontapplication.com; 
+  frame-src 'self' tel:;
+  default-src 'self';
+  connect-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  font-src 'self';
+  media-src 'self';
+  object-src 'none';
+  child-src 'self';
+  form-action 'self';
+  base-uri 'self';
+  navigate-to 'self'
+  ">
 </head>
 
 <body>
