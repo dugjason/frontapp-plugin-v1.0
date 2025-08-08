@@ -48,22 +48,6 @@ Front.contextUpdates.subscribe(async (context) => {
         Front.assign(context.teammate.id)
       });
 
-      updateDraftButton.addEventListener('click', async () => {
-        let draftContent = await fetchDemoData();
-
-        console.log('Updating draft with ID', context.conversation.draftId);
-
-        Front.updateDraft(
-          context.conversation.draftId,
-          {
-            content: {
-              body: draftContent.body,
-              type: 'text'
-            },
-            updateMode: 'replace'
-          })
-      })
-
       logDraftButton.addEventListener('click', async () => {
         console.log('RUNNING logDraftButton()', context.conversation)
         let draftId = context.conversation.draftId
@@ -110,7 +94,6 @@ async function updateDraft(context, updateMode) {
   console.log('Updating draft with ID', globalContext.conversation.draftId);
 
   try {
-
     await Front.updateDraft(
       globalContext.conversation.draftId,
       {
@@ -216,10 +199,6 @@ async function insertDraftReply() {
       originalMessageId: messageId
     }
   });
-}
-
-async function updateDraft() {
-
 }
 
 async function listTags() {
