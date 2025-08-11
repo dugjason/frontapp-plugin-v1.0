@@ -7,16 +7,12 @@ const contextExternalURL = document.getElementById('contextExternalURL');
 const selectedConversation = document.getElementById('selectedConversation');
 
 Front.contextUpdates.subscribe(async (context) => {
-  console.log('Context:', context);
+  console.log('---\nContext:', context, '\n---');
 
   globalContext = context;
 
   var displayTeammate = document.getElementById('frontTeammate');
   displayTeammate.innerHTML = 'Hello ' + context.teammate.name.split(' ')[0];
-
-
-  // This is causing console errors
-  //assignButton.removeEventListener('click', _assign);
 
   switch (context.type) {
     case 'noConversation':
@@ -86,7 +82,7 @@ async function updateDraft(updateMode) {
   if (!['insert', 'replace'].includes(updateMode)) {
     throw new Error('Invalid draft updateMode');
   }
-  let draftContent = await fetchDemoData();
+  let draftContent = Faker.lorem.paragraphs(3);
   console.log(`[updateDraft(${updateMode})] Updating draft with ID ${globalContext.conversation.draftId}`);
 
   try {
