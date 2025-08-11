@@ -1,4 +1,5 @@
 //var Front = require('@frontapp/ui-sdk');
+var Faker = require('./faker');
 let globalContext;
 const assignButton = document.getElementById('assign');
 const updateDraftButton = document.getElementById('updateDraft');
